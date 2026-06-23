@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<style>
+@keyframes breatheSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+@keyframes shakeHard{0%,100%{transform:translate(0,0)}20%{transform:translate(-3px,1px)}40%{transform:translate(3px,-1px)}60%{transform:translate(-2px,2px)}80%{transform:translate(2px,-1px)}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(0.5)}50%{opacity:1;transform:translate(8px,-15px) scale(1)}100%{opacity:0;transform:translate(16px,-30px) scale(0.8)}}
+@keyframes ink{0%{opacity:0;transform:scale(0)}50%{opacity:0.7;transform:scale(1.2)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes smoke{0%{opacity:0.6;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-25px) scale(1.5)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}60%{transform:translateY(-2px)}}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.15)}}
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+</style>
+<g style="animation:shakeHard 0.4s ease-in-out infinite"><ellipse cx="100" cy="138" rx="38" ry="26" fill="#9B6BB0" opacity="0.5"/><ellipse cx="92" cy="142" rx="9" ry="16" fill="#9B6BB0" transform="rotate(12,92,142)"/><ellipse cx="108" cy="142" rx="9" ry="16" fill="#9B6BB0" transform="rotate(-12,108,142)"/><ellipse cx="100" cy="98" rx="50" ry="47" fill="#E88080"/><ellipse cx="96" cy="92" rx="20" ry="15" fill="#F09090" opacity="0.3"/><ellipse cx="72" cy="109" rx="8" ry="5" fill="#FF9999" opacity="0.4"/><ellipse cx="128" cy="109" rx="8" ry="5" fill="#FF9999" opacity="0.4"/><g stroke="#FF6B6B" stroke-width="3" stroke-linecap="round"><line x1="78" y1="89" x2="92" y2="103"/><line x1="92" y1="89" x2="78" y2="103"/><line x1="108" y1="89" x2="122" y2="103"/><line x1="122" y1="89" x2="108" y2="103"/></g>
+<path d="M92,116 Q96,119 100,116 Q104,113 108,116" stroke="#E87090" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><ellipse cx="92" cy="62" rx="4.5" ry="7" fill="#888" opacity="0.35" style="animation:smoke 1.5s ease-out infinite"/><ellipse cx="100" cy="57" rx="4" ry="6" fill="#888" opacity="0.25" style="animation:smoke 1.5s ease-out infinite .3s"/><ellipse cx="108" cy="60" rx="4.5" ry="7" fill="#888" opacity="0.35" style="animation:smoke 1.5s ease-out infinite .6s"/>
+<ellipse cx="100" cy="170" rx="48" ry="7" fill="#D4C7E0" opacity="0.45"/>
+</svg>

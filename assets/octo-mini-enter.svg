@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<style>
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes look{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(0.5)}50%{opacity:1;transform:translate(6px,-12px) scale(1)}100%{opacity:0;transform:translate(12px,-24px) scale(0.8)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+</style>
+<g style="animation:float 1.5s ease-in-out"><ellipse cx="100" cy="140" rx="5" ry="8" fill="#9B6BB0" opacity="0.7"/><ellipse cx="100" cy="146" rx="3" ry="3" fill="#B08ACC"/><ellipse cx="89" cy="141" rx="4.5" ry="7" fill="#9B6BB0" opacity="0.6"/><ellipse cx="89" cy="146" rx="3" ry="3" fill="#B08ACC"/><ellipse cx="111" cy="141" rx="4.5" ry="7" fill="#9B6BB0" opacity="0.6"/><ellipse cx="111" cy="146" rx="3" ry="3" fill="#B08ACC"/><ellipse cx="81" cy="138" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="81" cy="142" rx="3" ry="2.5" fill="#B08ACC"/><ellipse cx="119" cy="138" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="119" cy="142" rx="3" ry="2.5" fill="#B08ACC"/><ellipse cx="100" cy="118" rx="25" ry="23" fill="#C8A2D8"/><ellipse cx="97" cy="113" rx="11" ry="8" fill="#D8BAE8" opacity="0.25"/><ellipse cx="83" cy="125" rx="5" ry="3.5" fill="#F4A0B0" opacity="0.45"/><ellipse cx="117" cy="125" rx="5" ry="3.5" fill="#F4A0B0" opacity="0.45"/>
+<ellipse cx="92" cy="116" rx="5.5" ry="7" fill="#2D2D2D"/><g style="animation:look 3s ease-in-out infinite"><ellipse cx="91" cy="113" rx="2.8" ry="2.8" fill="#FFFFFF"/></g><ellipse cx="94" cy="118" rx="1.3" ry="1.3" fill="#FFFFFF" opacity="0.4"/><ellipse cx="108" cy="116" rx="5.5" ry="7" fill="#2D2D2D"/><g style="animation:look 3s ease-in-out infinite"><ellipse cx="107" cy="113" rx="2.8" ry="2.8" fill="#FFFFFF"/></g><ellipse cx="110" cy="118" rx="1.3" ry="1.3" fill="#FFFFFF" opacity="0.4"/>
+<circle cx="100" cy="126" r="2.2" fill="#E87090" opacity="0.7"/></g>
+</svg>

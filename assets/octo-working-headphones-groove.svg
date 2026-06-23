@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<style>
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+</style>
+<g style="animation:wobble 2.5s ease-in-out infinite">
+<g transform="translate(100,133)">
+<ellipse cx="-32" cy="10" rx="10" ry="19" fill="#9B6BB0" opacity="0.9"/>
+<ellipse cx="-32" cy="24" rx="7" ry="6" fill="#B08ACC"/>
+<ellipse cx="-16" cy="13" rx="10" ry="21" fill="#9B6BB0"/>
+<ellipse cx="-16" cy="29" rx="7" ry="6" fill="#B08ACC"/>
+<ellipse cx="0" cy="14" rx="10" ry="22" fill="#9B6BB0"/>
+<ellipse cx="0" cy="31" rx="7" ry="6" fill="#B08ACC"/>
+<ellipse cx="16" cy="13" rx="10" ry="21" fill="#9B6BB0"/>
+<ellipse cx="16" cy="29" rx="7" ry="6" fill="#B08ACC"/>
+<ellipse cx="32" cy="10" rx="10" ry="19" fill="#9B6BB0" opacity="0.9"/>
+<ellipse cx="32" cy="24" rx="7" ry="6" fill="#B08ACC"/>
+</g>
+<ellipse cx="100" cy="93" rx="50" ry="47" fill="#C8A2D8"/>
+<ellipse cx="96" cy="87" rx="20" ry="15" fill="#D8BAE8" opacity="0.25"/>
+<ellipse cx="72" cy="104" rx="8" ry="5" fill="#F4A0B0" opacity="0.5"/>
+<ellipse cx="128" cy="104" rx="8" ry="5" fill="#F4A0B0" opacity="0.5"/>
+<path d="M77,87 Q85,80 93,87" stroke="#2D2D2D" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M107,87 Q115,80 123,87" stroke="#2D2D2D" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M93,111 Q100,117 107,111" stroke="#E87090" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+<!-- headband: follows head contour -->
+<path d="M54,93 Q54,46 100,46 Q146,46 146,93" stroke="#6B5B8D" stroke-width="4.5" fill="none"/>
+<!-- left ear cup -->
+<rect x="44" y="80" width="16" height="24" rx="6" fill="#6B5B8D"/>
+<rect x="47" y="84" width="10" height="16" rx="4" fill="#8B7BA8"/>
+<!-- right ear cup -->
+<rect x="140" y="80" width="16" height="24" rx="6" fill="#6B5B8D"/>
+<rect x="143" y="84" width="10" height="16" rx="4" fill="#8B7BA8"/>
+</g>
+<!-- music notes -->
+<text x="155" y="62" font-size="13" fill="#B08ACC" style="animation:float 1.5s ease-in-out infinite">&#9835;</text>
+<text x="40" y="58" font-size="10" fill="#B08ACC" style="animation:float 1.5s ease-in-out infinite 0.5s">&#9834;</text>
+<text x="160" y="50" font-size="8" fill="#B08ACC" style="animation:float 1.5s ease-in-out infinite 1s">&#9833;</text>
+<ellipse cx="100" cy="170" rx="48" ry="7" fill="#D4C7E0" opacity="0.45"/>
+</svg>
