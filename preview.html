@@ -82,6 +82,7 @@
     改前 = 原始动画；改后 = 新的运动系统。左图是改前、右图是改后。重点看四处：
     <b>触手是不是在蠕动</b>、<b>身体是不是在呼吸而不是平移</b>、
     <b>旋转有没有以身体为轴心</b>、<b>会不会眨眼</b>。
+    若看不到最新效果，按 <b>Ctrl+F5</b> 硬刷新一次。
   </p>
 </header>
 <main id="main"></main>
@@ -135,7 +136,10 @@ const GROUPS = [
 const main = document.getElementById('main');
 let mode = 'side';
 
-function src(v, f){ return (v === 'old' ? 'assets-v1/' : 'assets/') + f; }
+// 每次改动动画后改一下这个版本号，避免浏览器拿缓存的旧 SVG
+const VER = '20260912c';
+
+function src(v, f){ return (v === 'old' ? 'assets-v1/' : 'assets/') + f + '?v=' + VER; }
 
 function render(){
   main.innerHTML = '';

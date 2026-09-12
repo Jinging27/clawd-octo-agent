@@ -48,7 +48,7 @@ EXTRA_KEYFRAMES = """@keyframes tentacleTwitch{0%,100%{transform:rotate(-7deg) t
 @keyframes scrub{0%,100%{transform:rotate(3.5deg) translateY(.7px)}50%{transform:rotate(-2deg) translateY(0)}}
 @keyframes sweep{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 @keyframes dust{0%{opacity:0;transform:translate(0,0) scale(.4)}25%{opacity:.55}100%{opacity:0;transform:translate(16px,-14px) scale(1.4)}}
-@keyframes dart{0%,100%{transform:translateX(-1.7px)}28%{transform:translateX(1.7px)}52%{transform:translateX(-.8px)}76%{transform:translateX(1.4px)}}
+@keyframes dart{0%,100%{transform:translateX(-1.7px) scale(1)}28%{transform:translateX(1.7px) scale(1.07)}52%{transform:translateX(-.8px) scale(1.01)}76%{transform:translateX(1.4px) scale(1.05)}}
 @keyframes anger{0%,100%{opacity:.65;transform:translate(0,0) scale(.9)}50%{opacity:1;transform:translate(2px,-2px) scale(1.16)}}
 """
 
@@ -129,15 +129,15 @@ SWEEP_BROOM_OLD = (
     '<circle cx="170" cy="143" r="2" fill="#D4C7E0" opacity="0.5" style="animation:float 1.2s ease-in-out infinite"/>'
 )
 SWEEP_BROOM_NEW = (
-    '<g style="transform-origin:141px 70px;animation:sweep 1.5s ease-in-out infinite">'
-    '<line x1="140" y1="68" x2="160" y2="138" stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>'
-    '<rect x="153" y="133" width="16" height="8" rx="2" fill="#D4A574"/></g>'
-    '<circle cx="163" cy="143" r="2.1" fill="#D4C7E0" opacity="0" '
-    'style="transform-origin:163px 143px;animation:dust 1.5s ease-out infinite"/>'
-    '<circle cx="168" cy="139" r="1.6" fill="#E2D8EC" opacity="0" '
-    'style="transform-origin:168px 139px;animation:dust 1.5s ease-out infinite;animation-delay:-.5s"/>'
-    '<circle cx="159" cy="146" r="1.3" fill="#D4C7E0" opacity="0" '
-    'style="transform-origin:159px 146px;animation:dust 1.5s ease-out infinite;animation-delay:-1s"/>'
+    '<g style="transform-origin:156px 102px;animation:sweep 1.5s ease-in-out infinite">'
+    '<line x1="156" y1="100" x2="178" y2="168" stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>'
+    '<rect x="171" y="163" width="16" height="8" rx="2" fill="#D4A574"/></g>'
+    '<circle cx="177" cy="173" r="2.1" fill="#D4C7E0" opacity="0" '
+    'style="transform-origin:177px 173px;animation:dust 1.5s ease-out infinite"/>'
+    '<circle cx="182" cy="169" r="1.6" fill="#E2D8EC" opacity="0" '
+    'style="transform-origin:182px 169px;animation:dust 1.5s ease-out infinite;animation-delay:-.5s"/>'
+    '<circle cx="173" cy="176" r="1.3" fill="#D4C7E0" opacity="0" '
+    'style="transform-origin:173px 176px;animation:dust 1.5s ease-out infinite;animation-delay:-1s"/>'
 )
 
 # sweeping：光让扫帚摆还不够 —— 身体和扫帚必须「同向同步」，读起来才是章鱼在推扫帚。
@@ -150,9 +150,9 @@ SWEEP_FIXES = [
     ("animation-delay:-1.28s", "animation-delay:-1.2s"),
 ]
 
-# annoyed：身体 0.55s 急促抖，触手却还挂在 3.4s 慢波上，节奏割裂；
-#   眼睛半眯会被读成「困」而不是「烦」。-> 触手提速并加大摆幅、眨眼改急促、
-#   眼珠左右乱转（烦躁不安）、怒气符号跟着抖动一起跳。
+# annoyed：身体 0.55s 急促抖，触手却还挂在 3.4s 慢波上，节奏割裂。
+#   眼睛是重灾区：半眯（squint）读成「困」，改成急促眨眼后在缩略图上又被看成「闭眼」。
+#   -> 干脆拿掉眼皮，让眼睛始终完全睁开，用「瞪眼 + 眼珠乱转」表达烦躁。
 _EYE_L = (
     '<ellipse cx="85" cy="96" rx="11" ry="13" fill="#2D2D2D"/>'
     '<ellipse cx="84" cy="92" rx="5" ry="5" fill="#FFFFFF"/>'
@@ -163,11 +163,29 @@ _EYE_R = (
     '<ellipse cx="114" cy="92" rx="5" ry="5" fill="#FFFFFF"/>'
     '<ellipse cx="119" cy="99" rx="2" ry="2" fill="#FFFFFF" opacity="0.5"/>'
 )
+# add_lids 生成的两片眼皮（在 second_pass 之前插入），这里直接删掉
+_LID_L = (
+    '<ellipse cx="85" cy="96" rx="13.00" ry="15.00" fill="#BA97C9" '
+    'style="transform-origin:85px 81.00px;animation:blink 5.8s ease-in-out infinite"/>'
+)
+_LID_R = (
+    '<ellipse cx="115" cy="96" rx="13.00" ry="15.00" fill="#BA97C9" '
+    'style="transform-origin:115px 81.00px;animation:blink 5.8s ease-in-out infinite"/>'
+)
 ANNOYED_FIXES = [
     ("animation:tentacle 3.4s", "animation:tentacleTwitch 1.7s"),
-    ("animation:blink 5.8s", "animation:blink 2.2s"),
-    (_EYE_L, '<g style="animation:dart 1.05s ease-in-out infinite">' + _EYE_L + "</g>"),
-    (_EYE_R, '<g style="animation:dart 1.05s ease-in-out infinite">' + _EYE_R + "</g>"),
+    (_LID_L, ""),
+    (_LID_R, ""),
+    (
+        _EYE_L,
+        '<g style="transform-origin:85px 96px;animation:dart 1.05s ease-in-out infinite">'
+        + _EYE_L + "</g>",
+    ),
+    (
+        _EYE_R,
+        '<g style="transform-origin:115px 96px;animation:dart 1.05s ease-in-out infinite">'
+        + _EYE_R + "</g>",
+    ),
     (
         '<path d="M130,60 L135,55 L140,60 L145,53" stroke="#D9737F" stroke-width="2" '
         'fill="none" stroke-linecap="round"/>',
