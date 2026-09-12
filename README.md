@@ -128,7 +128,7 @@ SVG 动画使用 CSS keyframes（`tools/optimize_animations.py` 负责批量生�
 - `tentacle` / `tentacleMini` — 每根触手独立波动，用负 `animation-delay` 做出从一侧扫到另一侧的波浪
 - `tentacleTwitch` — 急促版触手摆动（烦躁状态用：周期从 3.4s 提到 1.7s，摆幅也加大）
 - `blink` — 眼皮眨眼，每个循环末尾一次「双眨」，避免机械的等间隔
-- `squint` — 半眯眼，眼皮压住瞳孔上半部，读起来是「不耐烦」
+- `dart` — 眼珠不规则左右游移（烦躁状态用）
 - `look` — 眼睛高光移动
 
 **状态特效**
@@ -138,8 +138,10 @@ SVG 动画使用 CSS keyframes（`tools/optimize_animations.py` 负责批量生�
 - `ink` — 墨汁扩散
 - `smoke` — 冒烟
 - `zz` — 睡眠气泡
-- `sweep` / `scrub` / `dust` — 扫地三件套：扫帚以握把为轴心左右扫、身体同频小幅晃动、灰尘扬起后淡出
+- `sweep` / `scrub` / `dust` — 扫地三件套：扫帚以握把为轴心左右扫、身体**同向**小幅晃动、灰尘扬起后淡出（三者同频 1.5s）
 - `anger` — 怒气符号跳动（烦躁状态）
+
+> 表达「烦躁」要用**睁眼 + 急促眨眼 + 眼珠乱转 + 高频抖动**。把眼睛画成半眯（`scaleY` 半闭）会被读成「困倦」而不是「不耐烦」——这是踩过的坑。
 
 **实现约定**
 - 所有旋转/缩放的元素都显式写 `transform-origin`（用户坐标系 px 值），否则 SVG 会以视口原点为轴心转动，看起来像「甩飞」。

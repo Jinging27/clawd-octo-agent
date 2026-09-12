@@ -45,11 +45,11 @@ STYLE = """<style>
 
 # 只有 sweeping / annoyed 用到的补充 keyframes，按需注入，避免污染其余 28 个文件
 EXTRA_KEYFRAMES = """@keyframes tentacleTwitch{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(7deg) translateY(1.6px)}}
-@keyframes scrub{0%,100%{transform:rotate(-2.2deg) translateY(0)}50%{transform:rotate(2.2deg) translateY(.8px)}}
-@keyframes sweep{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+@keyframes scrub{0%,100%{transform:rotate(3.5deg) translateY(.7px)}50%{transform:rotate(-2deg) translateY(0)}}
+@keyframes sweep{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 @keyframes dust{0%{opacity:0;transform:translate(0,0) scale(.4)}25%{opacity:.55}100%{opacity:0;transform:translate(16px,-14px) scale(1.4)}}
-@keyframes squint{0%,100%{transform:scaleY(.42)}50%{transform:scaleY(.58)}}
-@keyframes anger{0%,100%{opacity:.7;transform:translate(0,0) scale(.92)}50%{opacity:1;transform:translate(1.5px,-1.5px) scale(1.1)}}
+@keyframes dart{0%,100%{transform:translateX(-1.7px)}28%{transform:translateX(1.7px)}52%{transform:translateX(-.8px)}76%{transform:translateX(1.4px)}}
+@keyframes anger{0%,100%{opacity:.65;transform:translate(0,0) scale(.9)}50%{opacity:1;transform:translate(2px,-2px) scale(1.16)}}
 """
 
 # 每个文件身体主组的新动画（含时长/缓动）
@@ -129,23 +129,45 @@ SWEEP_BROOM_OLD = (
     '<circle cx="170" cy="143" r="2" fill="#D4C7E0" opacity="0.5" style="animation:float 1.2s ease-in-out infinite"/>'
 )
 SWEEP_BROOM_NEW = (
-    '<g style="transform-origin:146px 70px;animation:sweep 1.5s ease-in-out infinite">'
-    '<line x1="145" y1="68" x2="165" y2="138" stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>'
-    '<rect x="158" y="133" width="16" height="8" rx="2" fill="#D4A574"/></g>'
-    '<circle cx="168" cy="143" r="2.1" fill="#D4C7E0" opacity="0" '
-    'style="transform-origin:168px 143px;animation:dust 1.5s ease-out infinite"/>'
-    '<circle cx="173" cy="139" r="1.6" fill="#E2D8EC" opacity="0" '
-    'style="transform-origin:173px 139px;animation:dust 1.5s ease-out infinite;animation-delay:-.5s"/>'
-    '<circle cx="164" cy="146" r="1.3" fill="#D4C7E0" opacity="0" '
-    'style="transform-origin:164px 146px;animation:dust 1.5s ease-out infinite;animation-delay:-1s"/>'
+    '<g style="transform-origin:141px 70px;animation:sweep 1.5s ease-in-out infinite">'
+    '<line x1="140" y1="68" x2="160" y2="138" stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>'
+    '<rect x="153" y="133" width="16" height="8" rx="2" fill="#D4A574"/></g>'
+    '<circle cx="163" cy="143" r="2.1" fill="#D4C7E0" opacity="0" '
+    'style="transform-origin:163px 143px;animation:dust 1.5s ease-out infinite"/>'
+    '<circle cx="168" cy="139" r="1.6" fill="#E2D8EC" opacity="0" '
+    'style="transform-origin:168px 139px;animation:dust 1.5s ease-out infinite;animation-delay:-.5s"/>'
+    '<circle cx="159" cy="146" r="1.3" fill="#D4C7E0" opacity="0" '
+    'style="transform-origin:159px 146px;animation:dust 1.5s ease-out infinite;animation-delay:-1s"/>'
 )
 
+# sweeping：光让扫帚摆还不够 —— 身体和扫帚必须「同向同步」，读起来才是章鱼在推扫帚。
+#   身体常态朝扫帚方向（右）倾着，最右倾时扫帚头刚好扫到最右；触手也提速跟上扫地节奏。
+SWEEP_FIXES = [
+    ("animation:tentacle 3.4s", "animation:tentacle 1.5s"),
+    ("animation-delay:-0.32s", "animation-delay:-0.3s"),
+    ("animation-delay:-0.64s", "animation-delay:-0.6s"),
+    ("animation-delay:-0.96s", "animation-delay:-0.9s"),
+    ("animation-delay:-1.28s", "animation-delay:-1.2s"),
+]
+
 # annoyed：身体 0.55s 急促抖，触手却还挂在 3.4s 慢波上，节奏割裂；
-#   眼皮 5.8s 才眨一次，太悠闲。-> 触手提速到 1.7s 并加大摆幅，眼睛改成半眯的 squint，
-#   右上角的怒气符号从静止改成跟着抖动一起跳。
+#   眼睛半眯会被读成「困」而不是「烦」。-> 触手提速并加大摆幅、眨眼改急促、
+#   眼珠左右乱转（烦躁不安）、怒气符号跟着抖动一起跳。
+_EYE_L = (
+    '<ellipse cx="85" cy="96" rx="11" ry="13" fill="#2D2D2D"/>'
+    '<ellipse cx="84" cy="92" rx="5" ry="5" fill="#FFFFFF"/>'
+    '<ellipse cx="89" cy="99" rx="2" ry="2" fill="#FFFFFF" opacity="0.5"/>'
+)
+_EYE_R = (
+    '<ellipse cx="115" cy="96" rx="11" ry="13" fill="#2D2D2D"/>'
+    '<ellipse cx="114" cy="92" rx="5" ry="5" fill="#FFFFFF"/>'
+    '<ellipse cx="119" cy="99" rx="2" ry="2" fill="#FFFFFF" opacity="0.5"/>'
+)
 ANNOYED_FIXES = [
     ("animation:tentacle 3.4s", "animation:tentacleTwitch 1.7s"),
-    ("animation:blink 5.8s", "animation:squint 1.3s"),
+    ("animation:blink 5.8s", "animation:blink 2.2s"),
+    (_EYE_L, '<g style="animation:dart 1.05s ease-in-out infinite">' + _EYE_L + "</g>"),
+    (_EYE_R, '<g style="animation:dart 1.05s ease-in-out infinite">' + _EYE_R + "</g>"),
     (
         '<path d="M130,60 L135,55 L140,60 L145,53" stroke="#D9737F" stroke-width="2" '
         'fill="none" stroke-linecap="round"/>',
@@ -335,13 +357,15 @@ def second_pass(name, text):
         if SWEEP_BROOM_OLD not in text:
             raise SystemExit("sweeping broom anchor missing")
         text = text.replace(SWEEP_BROOM_OLD, SWEEP_BROOM_NEW, 1)
+        fixes = SWEEP_FIXES
     elif name == "octo-react-annoyed.svg":
-        for old, new in ANNOYED_FIXES:
-            if old not in text:
-                raise SystemExit("annoyed anchor missing: %r" % old)
-            text = text.replace(old, new)
+        fixes = ANNOYED_FIXES
     else:
         return text
+    for old, new in fixes:
+        if old not in text:
+            raise SystemExit("anchor missing in %s: %r" % (name, old))
+        text = text.replace(old, new)
     # 只给这两个状态注入专属 keyframes，其余 28 个文件不受影响
     if "</style>" not in text:
         raise SystemExit("no <style> block in %s" % name)
