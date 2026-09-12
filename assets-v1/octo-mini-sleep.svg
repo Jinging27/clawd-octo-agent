@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<style>
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes look{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(0.5)}50%{opacity:1;transform:translate(6px,-12px) scale(1)}100%{opacity:0;transform:translate(12px,-24px) scale(0.8)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+</style>
+<g style="animation:breathe 5s ease-in-out infinite"><ellipse cx="100" cy="148" rx="4.5" ry="6.5" fill="#9B6BB0" opacity="0.6"/><ellipse cx="100" cy="153" rx="3" ry="2.5" fill="#B08ACC"/><ellipse cx="91" cy="149" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="91" cy="153" rx="2.5" ry="2.5" fill="#B08ACC"/><ellipse cx="109" cy="149" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="109" cy="153" rx="2.5" ry="2.5" fill="#B08ACC"/><ellipse cx="100" cy="130" rx="25" ry="20" fill="#C8A2D8"/><ellipse cx="97" cy="125" rx="11" ry="7" fill="#D8BAE8" opacity="0.25"/><ellipse cx="83" cy="136" rx="5" ry="3" fill="#F4A0B0" opacity="0.4"/><ellipse cx="117" cy="136" rx="5" ry="3" fill="#F4A0B0" opacity="0.4"/><line x1="87" y1="122" x2="97" y2="122" stroke="#2D2D2D" stroke-width="1.6" stroke-linecap="round"/><line x1="103" y1="122" x2="113" y2="122" stroke="#2D2D2D" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M96,132 Q100,135 104,132" stroke="#E87090" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+<g opacity="0.6"><text x="145" y="55" font-size="10" fill="#7B68AE" font-family="sans-serif" font-weight="bold" style="animation:zz 2s infinite">Z</text><text x="152" y="47" font-size="8" fill="#7B68AE" font-family="sans-serif" font-weight="bold" style="animation:zz 2s infinite .5s">Z</text><text x="157" y="41" font-size="6" fill="#7B68AE" font-family="sans-serif" font-weight="bold" style="animation:zz 2s infinite 1s">z</text></g></g>
+</svg>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>小章鱼主题 · 动画优化对比</title>
+<style>
+  :root{
+    --bg:#f6f5f9;
+    --card:#ffffff;
+    --line:#e6e3ee;
+    --ink:#2c2a33;
+    --ink-2:#6f6a80;
+    --accent:#8b6fc4;
+    --accent-soft:#f0ebfa;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font:14px/1.5 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(246,245,249,.86);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    padding:16px 28px;
+  }
+  .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  h1{font-size:17px;margin:0;font-weight:650;letter-spacing:.2px}
+  h1 span{color:var(--ink-2);font-weight:400;font-size:13px;margin-left:8px}
+  .seg{display:flex;background:#eae7f2;border-radius:9px;padding:3px;gap:2px}
+  .seg button{
+    border:0;background:transparent;color:var(--ink-2);
+    font:inherit;font-size:13px;padding:6px 15px;border-radius:7px;cursor:pointer;
+    transition:background .18s,color .18s;
+  }
+  .seg button:hover{color:var(--ink)}
+  .seg button.on{background:#fff;color:var(--accent);font-weight:600;box-shadow:0 1px 3px rgba(60,40,110,.13)}
+  .hint{margin:10px 0 0;font-size:12.5px;color:var(--ink-2);max-width:860px}
+  .hint b{color:var(--accent);font-weight:600}
+  main{padding:26px 28px 60px}
+  h2{
+    font-size:12px;text-transform:uppercase;letter-spacing:.9px;
+    color:var(--ink-2);font-weight:650;margin:34px 0 14px;
+  }
+  h2:first-child{margin-top:0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:10px 10px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;
+    transition:box-shadow .2s,border-color .2s;
+  }
+  .card:hover{box-shadow:0 4px 16px rgba(60,40,110,.09);border-color:#d9d3e8}
+  .stage{display:flex;gap:8px;align-items:center;justify-content:center;min-height:126px}
+  .stage img{width:126px;height:126px;display:block}
+  .card.side .stage img{width:88px;height:88px}
+  .stage figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:1px}
+  .stage figcaption{font-size:9.5px;color:#a29cb3;letter-spacing:.3px}
+  .stage figure:last-child figcaption{color:var(--accent);font-weight:700}
+  .cap{font-size:12.5px;font-weight:600;text-align:center;line-height:1.35}
+  .file{font-size:10.5px;color:#a29cb3;font-family:ui-monospace,Consolas,monospace;text-align:center;word-break:break-all}
+  .badge{
+    display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;
+    background:var(--accent-soft);color:var(--accent);font-weight:600;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <h1>小章鱼主题 · 动画优化<span>30 个状态</span></h1>
+    <div class="seg" id="seg">
+      <button data-mode="side" class="on">并排对比</button>
+      <button data-mode="new">只改后</button>
+      <button data-mode="old">只改前</button>
+    </div>
+  </div>
+  <p class="hint">
+    改前 = 原始动画；改后 = 新的运动系统。左图是改前、右图是改后。重点看四处：
+    <b>触手是不是在蠕动</b>、<b>身体是不是在呼吸而不是平移</b>、
+    <b>旋转有没有以身体为轴心</b>、<b>会不会眨眼</b>。
+  </p>
+</header>
+<main id="main"></main>
+
+<script>
+const GROUPS = [
+  ["基础状态", [
+    ["待机 · 跟眼", "octo-idle-follow.svg"],
+  ]],
+  ["工作状态", [
+    ["思考中", "octo-working-thinking.svg"],
+    ["输出中", "octo-working-typing.svg"],
+    ["多会话杂耍", "octo-working-juggling.svg"],
+    ["建造（3+ 会话）", "octo-working-building.svg"],
+    ["听歌摇摆", "octo-working-headphones-groove.svg"],
+  ]],
+  ["睡眠序列", [
+    ["打哈欠", "octo-sleep-yawn.svg"],
+    ["打盹", "octo-sleep-doze.svg"],
+    ["倒下", "octo-sleep-collapse.svg"],
+    ["沉睡", "octo-sleep-sleeping.svg"],
+    ["醒来", "octo-sleep-wake.svg"],
+  ]],
+  ["通知 / 反应", [
+    ["请求授权", "octo-notif-notification.svg"],
+    ["出错", "octo-notif-error.svg"],
+    ["任务完成", "octo-notif-happy.svg"],
+    ["清理通知", "octo-notif-sweeping.svg"],
+    ["传递中", "octo-notif-carrying.svg"],
+  ]],
+  ["鼠标交互", [
+    ["拖拽", "octo-react-drag.svg"],
+    ["左键点击", "octo-react-left.svg"],
+    ["右键点击", "octo-react-right.svg"],
+    ["双击", "octo-react-double.svg"],
+    ["连续戳 · 烦躁", "octo-react-annoyed.svg"],
+  ]],
+  ["迷你模式", [
+    ["迷你待机", "octo-mini-idle.svg"],
+    ["迷你警觉", "octo-mini-alert.svg"],
+    ["迷你开心", "octo-mini-happy.svg"],
+    ["迷你入场", "octo-mini-enter.svg"],
+    ["迷你探头", "octo-mini-peek.svg"],
+    ["迷你横走", "octo-mini-crabwalk.svg"],
+    ["迷你入睡", "octo-mini-enter-sleep.svg"],
+    ["迷你沉睡", "octo-mini-sleep.svg"],
+    ["迷你打字", "octo-mini-typing.svg"],
+  ]],
+];
+
+const main = document.getElementById('main');
+let mode = 'side';
+
+function src(v, f){ return (v === 'old' ? 'assets-v1/' : 'assets/') + f; }
+
+function render(){
+  main.innerHTML = '';
+  for (const [title, items] of GROUPS){
+    const h = document.createElement('h2');
+    h.textContent = title;
+    main.appendChild(h);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    for (const [label, file] of items){
+      const card = document.createElement('div');
+      card.className = 'card' + (mode === 'side' ? ' side' : '');
+
+      const stage = document.createElement('div');
+      stage.className = 'stage';
+
+      if (mode === 'side'){
+        stage.innerHTML =
+          '<figure><img src="' + src('old', file) + '" alt=""><figcaption>改前</figcaption></figure>' +
+          '<figure><img src="' + src('new', file) + '" alt=""><figcaption>改后</figcaption></figure>';
+      } else {
+        stage.innerHTML = '<img src="' + src(mode, file) + '" alt="">';
+      }
+
+      card.appendChild(stage);
+      const cap = document.createElement('div');
+      cap.className = 'cap';
+      cap.textContent = label;
+      card.appendChild(cap);
+      const fn = document.createElement('div');
+      fn.className = 'file';
+      fn.textContent = file;
+      card.appendChild(fn);
+      grid.appendChild(card);
+    }
+    main.appendChild(grid);
+  }
+}
+
+document.getElementById('seg').addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  mode = b.dataset.mode;
+  [...document.querySelectorAll('#seg button')].forEach(x => x.classList.toggle('on', x === b));
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

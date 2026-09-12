@@ -115,20 +115,38 @@ Clawd on Desk 目前没有内置音乐检测功能。如果你希望「听歌时
 
 ## 开发
 
-SVG 动画使用 CSS keyframes：
-- `breathe` / `breatheSlow` — 呼吸起伏
-- `float` — 漂浮
-- `wobble` — 左右摇摆
-- `shake` / `shakeHard` — 抖动
-- `bounce` — 弹跳
-- `sway` — 轻摇
-- `blink` — 眨眼
+SVG 动画使用 CSS keyframes（`tools/optimize_animations.py` 负责批量生成动画层）：
+
+**运动层**
+- `breathe` / `breatheSlow` / `breatheDeep` — 带挤压拉伸的呼吸（身体以坐姿点为轴心做轻微缩放，不是单纯的上下位移）
+- `float` — 漂浮 + 微幅旋转
+- `wobble` / `sway` — 以身体底部为轴心的左右摇晃
+- `shake` / `shakeHard` — 抖动（含旋转，读起来像「烦躁」而不是画面抖动）
+- `bounce` — 落地带挤压、起跳带拉伸的弹跳
+
+**生命感细节**
+- `tentacle` / `tentacleMini` — 每根触手独立波动，用负 `animation-delay` 做出从一侧扫到另一侧的波浪
+- `tentacleTwitch` — 急促版触手摆动（烦躁状态用：周期从 3.4s 提到 1.7s，摆幅也加大）
+- `blink` — 眼皮眨眼，每个循环末尾一次「双眨」，避免机械的等间隔
+- `squint` — 半眯眼，眼皮压住瞳孔上半部，读起来是「不耐烦」
 - `look` — 眼睛高光移动
+
+**状态特效**
 - `typepress` — 键盘按键
 - `glow` — 发光
-- `pulse` — 脉冲
+- `pulse` — 脉冲（缩放 + 透明度）
 - `ink` — 墨汁扩散
 - `smoke` — 冒烟
+- `zz` — 睡眠气泡
+- `sweep` / `scrub` / `dust` — 扫地三件套：扫帚以握把为轴心左右扫、身体同频小幅晃动、灰尘扬起后淡出
+- `anger` — 怒气符号跳动（烦躁状态）
+
+**实现约定**
+- 所有旋转/缩放的元素都显式写 `transform-origin`（用户坐标系 px 值），否则 SVG 会以视口原点为轴心转动，看起来像「甩飞」。
+- 主题 SVG 会被净化：`@import`、`url(...)`、`<script>` 都会被剥离，动画只能用 `<style>` 里的 CSS `@keyframes`。
+- 脚本里的 `STYLE` 是 30 个文件共用的 keyframes 库；只被个别状态用到的 keyframes 放在 `EXTRA_KEYFRAMES`，由 `second_pass()` 按需注入，避免其余文件背上用不到的定义。
+- 脚本**不幂等**：正则锚点只匹配基线形态，重跑前必须先 `cp assets-v1/*.svg assets/`，否则会报锚点缺失。
+- 改完脚本务必跑一遍内置自校验（XML 合法性 + 每个 `animation:` 引用的 keyframe 都有定义），它会在发现问题时返回非零。
 
 ## 许可
 

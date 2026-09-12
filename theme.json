@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "name": "小章鱼多线程 Agent",
   "author": "TabBit",
-  "version": "1.0.0",
-  "description": "30 CSS-animated SVG states — cyan body, purple tentacles",
+  "version": "1.1.0",
+  "description": "30 CSS-animated SVG states — soft purple body, deep purple tentacles, ripple tentacles + blink",
 
   "viewBox": {
     "x": 0,
@@ -30,11 +30,11 @@
     "states": ["idle"],
     "eyeRatioX": 0.5,
     "eyeRatioY": 0.4,
-    "maxOffset": 8,
+    "maxOffset": 5,
     "trackingLayers": {
       "eyes": {
         "ids": ["pupil-left", "pupil-right"],
-        "maxOffset": 8,
+        "maxOffset": 5,
         "ease": 0.2
       }
     }

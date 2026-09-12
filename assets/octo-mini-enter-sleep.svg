@@ -1,15 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
 <style>
-@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-@keyframes look{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
-@keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
-@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(0.5)}50%{opacity:1;transform:translate(6px,-12px) scale(1)}100%{opacity:0;transform:translate(12px,-24px) scale(0.8)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
-@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes breathe{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-1.6px) scale(1.012,1.022)}}
+@keyframes breatheSlow{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-1.1px) scale(1.008,1.016)}}
+@keyframes breatheDeep{0%,100%{transform:translateY(0) scale(1,1)}48%{transform:translateY(-2.3px) scale(1.016,1.03)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-3.4px) rotate(.8deg)}}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}30%{transform:rotate(-1.8deg)}70%{transform:rotate(1.8deg)}}
+@keyframes sway{0%,100%{transform:rotate(-2.6deg)}50%{transform:rotate(2.6deg)}}
+@keyframes shake{0%,100%{transform:translate(0,0) rotate(0deg)}20%{transform:translate(-1.8px,.4px) rotate(-.7deg)}45%{transform:translate(1.8px,-.4px) rotate(.7deg)}70%{transform:translate(-1px,.3px) rotate(-.4deg)}}
+@keyframes shakeHard{0%,100%{transform:translate(0,0) rotate(0deg)}18%{transform:translate(-2.6px,.8px) rotate(-1.4deg)}42%{transform:translate(2.6px,-.8px) rotate(1.4deg)}66%{transform:translate(-1.6px,1px) rotate(-.9deg)}86%{transform:translate(1.6px,-1px) rotate(.9deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0) scale(1,1)}16%{transform:translateY(.8px) scale(1.035,.965)}44%{transform:translateY(-5.5px) scale(.98,1.035)}70%{transform:translateY(.5px) scale(1.028,.975)}88%{transform:translateY(-1.2px) scale(.995,1.005)}}
+@keyframes wave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(13deg)}}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.82)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes glow{0%,100%{filter:brightness(1) saturate(1)}50%{filter:brightness(1.09) saturate(1.05)}}
+@keyframes typepress{0%,100%{transform:translateY(0)}50%{transform:translateY(1.6px)}}
+@keyframes zz{0%{opacity:0;transform:translate(0,2px) scale(.55)}35%{opacity:.95;transform:translate(3px,-7px) scale(.9)}75%{opacity:.5;transform:translate(6px,-15px) scale(1)}100%{opacity:0;transform:translate(9px,-22px) scale(1.05)}}
+@keyframes ink{0%{opacity:0;transform:scale(.25)}35%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(1.55)}}
+@keyframes smoke{0%{opacity:.5;transform:translateY(0) scale(.75)}100%{opacity:0;transform:translateY(-18px) scale(1.5)}}
+@keyframes look{0%,100%{transform:translateX(-1.4px)}50%{transform:translateX(1.4px)}}
+@keyframes blink{0%,90%,100%{transform:scaleY(0)}91.5%{transform:scaleY(1)}93%{transform:scaleY(0)}94.2%{transform:scaleY(.5)}95.4%{transform:scaleY(0)}}
+@keyframes tentacle{0%,100%{transform:rotate(-4.2deg) translateY(0)}50%{transform:rotate(4.2deg) translateY(1.1px)}}
+@keyframes tentacleMini{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(1px)}}
+@keyframes swayTentacle{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 </style>
-<g style="animation:breathe 4s ease-in-out infinite"><ellipse cx="100" cy="140" rx="5" ry="8" fill="#9B6BB0" opacity="0.7"/><ellipse cx="100" cy="146" rx="3" ry="3" fill="#B08ACC"/><ellipse cx="89" cy="141" rx="4.5" ry="7" fill="#9B6BB0" opacity="0.6"/><ellipse cx="89" cy="146" rx="3" ry="3" fill="#B08ACC"/><ellipse cx="111" cy="141" rx="4.5" ry="7" fill="#9B6BB0" opacity="0.6"/><ellipse cx="111" cy="146" rx="3" ry="3" fill="#B08ACC"/><ellipse cx="81" cy="138" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="81" cy="142" rx="3" ry="2.5" fill="#B08ACC"/><ellipse cx="119" cy="138" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="119" cy="142" rx="3" ry="2.5" fill="#B08ACC"/><ellipse cx="100" cy="118" rx="25" ry="23" fill="#C8A2D8"/><ellipse cx="97" cy="113" rx="11" ry="8" fill="#D8BAE8" opacity="0.25"/><ellipse cx="83" cy="125" rx="5" ry="3.5" fill="#F4A0B0" opacity="0.45"/><ellipse cx="117" cy="125" rx="5" ry="3.5" fill="#F4A0B0" opacity="0.45"/>
+<g style="transform-origin:100px 146px;animation:breatheDeep 5.2s ease-in-out infinite"><g style="transform-origin:100.00px 134.00px;animation:tentacleMini 2.4s ease-in-out infinite;animation-delay:0s"><ellipse cx="100" cy="140" rx="5" ry="8" fill="#9B6BB0" opacity="0.7"/><ellipse cx="100" cy="146" rx="3" ry="3" fill="#B08ACC"/></g><g style="transform-origin:89.00px 136.00px;animation:tentacleMini 2.4s ease-in-out infinite;animation-delay:-0.32s"><ellipse cx="89" cy="141" rx="4.5" ry="7" fill="#9B6BB0" opacity="0.6"/><ellipse cx="89" cy="146" rx="3" ry="3" fill="#B08ACC"/></g><g style="transform-origin:111.00px 136.00px;animation:tentacleMini 2.4s ease-in-out infinite;animation-delay:-0.64s"><ellipse cx="111" cy="141" rx="4.5" ry="7" fill="#9B6BB0" opacity="0.6"/><ellipse cx="111" cy="146" rx="3" ry="3" fill="#B08ACC"/></g><g style="transform-origin:81.00px 134.50px;animation:tentacleMini 2.4s ease-in-out infinite;animation-delay:-0.96s"><ellipse cx="81" cy="138" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="81" cy="142" rx="3" ry="2.5" fill="#B08ACC"/></g><g style="transform-origin:119.00px 134.50px;animation:tentacleMini 2.4s ease-in-out infinite;animation-delay:-1.28s"><ellipse cx="119" cy="138" rx="4" ry="5.5" fill="#9B6BB0" opacity="0.5"/><ellipse cx="119" cy="142" rx="3" ry="2.5" fill="#B08ACC"/></g><ellipse cx="100" cy="118" rx="25" ry="23" fill="#C8A2D8"/><ellipse cx="97" cy="113" rx="11" ry="8" fill="#D8BAE8" opacity="0.25"/><ellipse cx="83" cy="125" rx="5" ry="3.5" fill="#F4A0B0" opacity="0.45"/><ellipse cx="117" cy="125" rx="5" ry="3.5" fill="#F4A0B0" opacity="0.45"/>
 <ellipse cx="92" cy="116" rx="5.5" ry="3.2" fill="#2D2D2D"/><ellipse cx="91" cy="114" rx="2.2" ry="1.6" fill="#FFFFFF"/><ellipse cx="108" cy="116" rx="5.5" ry="3.2" fill="#2D2D2D"/><ellipse cx="107" cy="114" rx="2.2" ry="1.6" fill="#FFFFFF"/>
 <path d="M98,126 Q100,128 102,126" stroke="#E87090" stroke-width="1.1" fill="none" stroke-linecap="round"/>
 <g opacity="0.6"><text x="145" y="55" font-size="10" fill="#7B68AE" font-family="sans-serif" font-weight="bold" style="animation:zz 2s infinite">Z</text><text x="152" y="47" font-size="8" fill="#7B68AE" font-family="sans-serif" font-weight="bold" style="animation:zz 2s infinite .5s">Z</text><text x="157" y="41" font-size="6" fill="#7B68AE" font-family="sans-serif" font-weight="bold" style="animation:zz 2s infinite 1s">z</text></g></g>

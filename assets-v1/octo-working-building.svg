@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<style>
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes breatheSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes wave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(18deg)}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(0.5)}50%{opacity:1;transform:translate(8px,-15px) scale(1)}100%{opacity:0;transform:translate(16px,-30px) scale(0.8)}}
+@keyframes typepress{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}60%{transform:translateY(-2px)}}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.15)}}
+@keyframes swayTentacle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+</style>
+<text x="22" y="28" font-size="7" fill="#7B68AE" opacity="0.2" font-family="monospace"><tspan x="22" dy="0">async def deploy():</tspan><tspan x="22" dy="10">  await build()</tspan><tspan x="22" dy="10">  await test()</tspan><tspan x="22" dy="10">  await ship()</tspan></text><g style="animation:glow 2s ease-in-out infinite"><g style="animation:shake 0.6s ease-in-out infinite"><g transform="translate(100,133)"><ellipse cx="-32" cy="10" rx="10" ry="19" fill="#9B6BB0" opacity="0.9"/><ellipse cx="-32" cy="24" rx="7" ry="6" fill="#B08ACC"/><ellipse cx="-16" cy="13" rx="10" ry="21" fill="#9B6BB0"/><ellipse cx="-16" cy="29" rx="7" ry="6" fill="#B08ACC"/><ellipse cx="0" cy="14" rx="10" ry="22" fill="#9B6BB0"/><ellipse cx="0" cy="31" rx="7" ry="6" fill="#B08ACC"/><ellipse cx="16" cy="13" rx="10" ry="21" fill="#9B6BB0"/><ellipse cx="16" cy="29" rx="7" ry="6" fill="#B08ACC"/><ellipse cx="32" cy="10" rx="10" ry="19" fill="#9B6BB0" opacity="0.9"/><ellipse cx="32" cy="24" rx="7" ry="6" fill="#B08ACC"/></g><ellipse cx="100" cy="93" rx="50" ry="47" fill="#C8A2D8"/><ellipse cx="96" cy="87" rx="20" ry="15" fill="#D8BAE8" opacity="0.25"/><ellipse cx="72" cy="104" rx="8" ry="5" fill="#F4A0B0" opacity="0.5"/><ellipse cx="128" cy="104" rx="8" ry="5" fill="#F4A0B0" opacity="0.5"/>
+<ellipse cx="85" cy="91" rx="11" ry="13" fill="#2D2D2D"/><ellipse cx="84" cy="87" rx="5" ry="5" fill="#FFFFFF"/><ellipse cx="89" cy="94" rx="2" ry="2" fill="#FFFFFF" opacity="0.5"/><ellipse cx="115" cy="91" rx="11" ry="13" fill="#2D2D2D"/><ellipse cx="114" cy="87" rx="5" ry="5" fill="#FFFFFF"/><ellipse cx="119" cy="94" rx="2" ry="2" fill="#FFFFFF" opacity="0.5"/>
+<ellipse cx="100" cy="113" rx="5.5" ry="4.5" fill="#E87090" opacity="0.8"/></g></g><ellipse cx="100" cy="50" rx="38" ry="12" fill="#FFD700" opacity="0.85"/><rect x="70" y="45" width="60" height="9" rx="4" fill="#FFD700"/><text x="86" y="53" font-size="7" fill="#8B6914" font-weight="bold">BUILD</text>
+<rect x="73" y="153" width="54" height="15" rx="3" fill="#E8E0F0" stroke="#C0B0D0" stroke-width="0.9"/><rect x="77" y="156" width="5" height="4" rx="1" fill="#D0C0E0" style="animation:typepress 0.3s infinite"/><rect x="84" y="156" width="5" height="4" rx="1" fill="#D0C0E0" style="animation:typepress 0.3s infinite .05s"/><rect x="91" y="156" width="5" height="4" rx="1" fill="#D0C0E0" style="animation:typepress 0.3s infinite .1s"/><rect x="98" y="156" width="5" height="4" rx="1" fill="#D0C0E0" style="animation:typepress 0.3s infinite .15s"/><rect x="105" y="156" width="5" height="4" rx="1" fill="#D0C0E0" style="animation:typepress 0.3s infinite .2s"/><rect x="112" y="156" width="5" height="4" rx="1" fill="#D0C0E0" style="animation:typepress 0.3s infinite .25s"/><rect x="81" y="162" width="36" height="4" rx="1" fill="#D0C0E0"/>
+<ellipse cx="100" cy="172" rx="48" ry="7" fill="#D4C7E0" opacity="0.45"/>
+</svg>
