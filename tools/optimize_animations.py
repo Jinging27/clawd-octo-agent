@@ -416,10 +416,12 @@ def process(path):
     report.append("body=%s@(%d,%d)" % (anim.split()[0], ox, oy))
 
     # 2b) 局部微调
+    # 注意：必须全局替换。同一个颜色在一张图里可能出现多次（比如左右腮红），
+    # 早先用 replace(old, new, 1) 只换第一处，导致两片腮红一深一浅。
     for old, new in SMALL_FIXES.get(name, []):
         if old not in text:
             raise SystemExit("missing fix anchor in %s: %r" % (name, old))
-        text = text.replace(old, new, 1)
+        text = text.replace(old, new)
 
     # 3) 触手波浪
     text, nt = wrap_tentacles(text, is_mini)
